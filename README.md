@@ -90,6 +90,13 @@ CONDA_EXTRA_DIRS="/path/to/envs /path/to/pkgs"
 `mcp-servers.txt` now uses `codex mcp add ...` commands.
 
 - MCP installation runs once at first container startup and writes into persistent `~/.codex` mount.
+- Default MCP servers configured in this repo:
+  - `serena` (coding agent toolkit)
+  - `context7` (up-to-date docs in MCP format)
+  - `twilio` (SMS notifications; installed only when `TWILIO_*` env vars are set)
+  - `grep` (GitHub code search)
+- Optional MCP server available but commented out by default:
+  - `zen` (requires `OPENROUTER_API_KEY`)
 - To force reinstall:
 
 ```bash
