@@ -32,6 +32,12 @@ get_shell_rc_filename() {
     local shell_name
     shell_name="$(basename "$shell_path")"
 
+    # Prefer existing zsh config when present, regardless of current shell.
+    if [ -f "$TARGET_HOME/.zshrc" ]; then
+        printf '%s\n' ".zshrc"
+        return
+    fi
+
     case "$shell_name" in
         zsh)
             printf '%s\n' ".zshrc"
