@@ -53,7 +53,7 @@ codex-docker --codex-version 0.98.0
 ```
 
 Notes:
-- `--cc-version` is preserved as a legacy alias and maps to Codex CLI version.
+- Use `--codex-version` to pin the Codex CLI version. `--cc-version` is a preserved legacy alias.
 - Inside container, Codex runs in YOLO mode via `--dangerously-bypass-approvals-and-sandbox`.
 
 ## Runtime Behavior
