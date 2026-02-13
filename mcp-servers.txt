@@ -12,8 +12,8 @@ codex mcp add context7 -- npx -y @upstash/context7-mcp
 # Twilio SMS notifications (requires TWILIO_* env vars)
 codex mcp add twilio --env ACCOUNT_SID=${TWILIO_ACCOUNT_SID} --env AUTH_TOKEN=${TWILIO_AUTH_TOKEN} --env FROM_NUMBER=${TWILIO_FROM_NUMBER} -- npx -y @yiyang.1i/sms-mcp-server
 
-# Grep MCP - GitHub code search
-codex mcp add grep --url https://mcp.grep.app
+# Grep MCP - GitHub code search (https://github.com/galprz/grep-mcp)
+codex mcp add grep -- uvx grep-mcp
 
 # === OPTIONAL MCP SERVERS (uncomment to enable) ===
 # Zen MCP - multi-model collaboration/debugging via OpenRouter

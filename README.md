@@ -94,7 +94,7 @@ CONDA_EXTRA_DIRS="/path/to/envs /path/to/pkgs"
   - `serena` (coding agent toolkit)
   - `context7` (up-to-date docs in MCP format)
   - `twilio` (SMS notifications; installed only when `TWILIO_*` env vars are set)
-  - `grep` (GitHub code search)
+  - `grep` (GitHub code search via `grep-mcp`: https://github.com/galprz/grep-mcp)
 - Optional MCP server available but commented out by default:
   - `zen` (requires `OPENROUTER_API_KEY`)
 - To force reinstall:

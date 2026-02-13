@@ -34,4 +34,4 @@ FORCE_MCP_REINSTALL=1 codex-docker
 - `serena` (stdio)
 - `context7` (stdio via `@upstash/context7-mcp`)
 - `twilio` (stdio, conditional on `TWILIO_*` vars)
-- `grep` (HTTP)
+- `grep` (stdio via `grep-mcp`)
