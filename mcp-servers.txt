@@ -1,0 +1,21 @@
+# Add Codex MCP servers below as needed.
+# Format examples:
+# codex mcp add <name> -- <command> <args>
+# codex mcp add <name> --url https://example.com/mcp
+
+# Serena - coding agent toolkit
+codex mcp add serena --env PATH=/usr/local/bin:/usr/bin:/bin:/opt/homebrew/bin:${HOME}/.local/bin -- bash -lc "for p in \$(which uvx 2>/dev/null) ${HOME}/.local/bin/uvx /opt/homebrew/bin/uvx /usr/local/bin/uvx uvx; do [ -x \"\$p\" ] && exec \"\$p\" --from git+https://github.com/oraios/serena serena-agent; done; echo \"uvx not found\" >&2; exit 1"
+
+# Context7 - up-to-date docs in MCP format
+codex mcp add context7 -- npx -y @upstash/context7-mcp
+
+# Twilio SMS notifications (requires TWILIO_* env vars)
+codex mcp add twilio --env ACCOUNT_SID=${TWILIO_ACCOUNT_SID} --env AUTH_TOKEN=${TWILIO_AUTH_TOKEN} --env FROM_NUMBER=${TWILIO_FROM_NUMBER} -- npx -y @yiyang.1i/sms-mcp-server
+
+# Grep MCP - GitHub code search
+codex mcp add grep --url https://mcp.grep.app
+
+# === OPTIONAL MCP SERVERS (uncomment to enable) ===
+# Zen MCP - multi-model collaboration/debugging via OpenRouter
+# Requires OPENROUTER_API_KEY in .env
+# codex mcp add zen --env OPENROUTER_API_KEY=${OPENROUTER_API_KEY} -- bash -lc "for p in \$(which uvx 2>/dev/null) ${HOME}/.local/bin/uvx /opt/homebrew/bin/uvx /usr/local/bin/uvx uvx; do [ -x \"\$p\" ] && exec \"\$p\" --from git+https://github.com/BeehiveInnovations/zen-mcp-server.git zen-mcp-server; done; echo \"uvx not found\" >&2; exit 1"

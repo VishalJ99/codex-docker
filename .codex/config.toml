@@ -1,0 +1,7 @@
+# Default codex-docker template config.
+# This file is copied to CODEX_DOCKER_HOME/codex-home/config.toml only if one is not already present.
+
+model_reasoning_effort = "high"
+
+[features]
+steer = true
