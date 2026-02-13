@@ -26,6 +26,22 @@ if ! command -v codex >/dev/null 2>&1; then
     exit 0
 fi
 
+is_placeholder_value() {
+    local value="${1:-}"
+
+    if [ -z "$value" ]; then
+        return 0
+    fi
+
+    case "$value" in
+        your_*|YOUR_*|placeholder*|changeme|CHANGE_ME|replace_me|REPLACE_ME|"<"*">")
+            return 0
+            ;;
+    esac
+
+    return 1
+}
+
 while IFS= read -r line || [[ -n "$line" ]]; do
     if [[ -z "$line" ]] || [[ "$line" =~ ^[[:space:]]*# ]]; then
         continue
@@ -35,7 +51,7 @@ while IFS= read -r line || [[ -n "$line" ]]; do
 
     missing_vars=""
     for var in $var_names; do
-        if [ -z "${!var:-}" ]; then
+        if is_placeholder_value "${!var:-}"; then
             missing_vars="$missing_vars $var"
         fi
     done

@@ -4,7 +4,7 @@
 # codex mcp add <name> --url https://example.com/mcp
 
 # Serena - coding agent toolkit
-codex mcp add serena --env PATH=/usr/local/bin:/usr/bin:/bin:/opt/homebrew/bin:${HOME}/.local/bin -- bash -lc "for p in \$(which uvx 2>/dev/null) ${HOME}/.local/bin/uvx /opt/homebrew/bin/uvx /usr/local/bin/uvx uvx; do [ -x \"\$p\" ] && exec \"\$p\" --from git+https://github.com/oraios/serena serena-agent; done; echo \"uvx not found\" >&2; exit 1"
+codex mcp add serena --env PATH=/usr/local/bin:/usr/bin:/bin:/opt/homebrew/bin:${HOME}/.local/bin -- bash -lc "for p in \$(which uvx 2>/dev/null) ${HOME}/.local/bin/uvx /opt/homebrew/bin/uvx /usr/local/bin/uvx uvx; do [ -x \"\$p\" ] && exec \"\$p\" --from serena-agent serena-mcp-server; done; echo \"uvx not found\" >&2; exit 1"
 
 # Context7 - up-to-date docs in MCP format
 codex mcp add context7 -- npx -y @upstash/context7-mcp
