@@ -1,8 +1,8 @@
 # Codex Docker
 
-Containerized drop-in equivalent of the Claude Docker workflow, but running OpenAI Codex CLI.
+Standalone containerized workflow for running OpenAI Codex CLI.
 
-It keeps the same wrapper API style and setup patterns:
+It provides a simple wrapper CLI with practical setup defaults:
 - isolated Docker runtime
 - current project mounted at `/workspace`
 - persistent agent home on host
@@ -38,7 +38,7 @@ cd ~/your-project
 codex-docker
 ```
 
-## Wrapper CLI (same style as Claude Docker)
+## Wrapper CLI
 
 ```bash
 codex-docker                       # Start Codex in current directory
@@ -48,12 +48,12 @@ codex-docker --rebuild             # Force rebuild image
 codex-docker --rebuild --no-cache  # Rebuild without cache
 codex-docker --memory 8g           # Set container memory limit
 codex-docker --gpus all            # Enable GPU access
-codex-docker --cc-version 0.98.0   # Pin Codex CLI version (compat flag)
+codex-docker --cc-version 0.98.0   # Pin Codex CLI version (legacy alias)
 codex-docker --codex-version 0.98.0
 ```
 
 Notes:
-- `--cc-version` is preserved as a compatibility alias and maps to Codex CLI version.
+- `--cc-version` is preserved as a legacy alias and maps to Codex CLI version.
 - Inside container, Codex runs in YOLO mode via `--dangerously-bypass-approvals-and-sandbox`.
 
 ## Runtime Behavior
