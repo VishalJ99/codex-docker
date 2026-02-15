@@ -61,6 +61,8 @@ Notes:
 - Current directory is mounted to `/workspace`.
 - Persistent Codex home is mounted at `/home/codex-user/.codex` from:
   - `${CODEX_DOCKER_HOME:-~/.codex-docker}/codex-home`
+- Default user-level agent instructions are seeded at:
+  - `${CODEX_DOCKER_HOME:-~/.codex-docker}/codex-home/AGENTS.md`
 - SSH keys are mounted from:
   - `${CODEX_DOCKER_HOME:-~/.codex-docker}/ssh`
 - `host.docker.internal` is always added.

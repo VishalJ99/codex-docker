@@ -22,6 +22,11 @@ if [ -f /app/.codex/config.toml ] && [ ! -f "$HOME/.codex/config.toml" ]; then
     echo "✓ Seeded default Codex config at $HOME/.codex/config.toml"
 fi
 
+if [ -f /app/.codex/AGENTS.md ] && [ ! -f "$HOME/.codex/AGENTS.md" ]; then
+    cp /app/.codex/AGENTS.md "$HOME/.codex/AGENTS.md"
+    echo "✓ Seeded default AGENTS instructions at $HOME/.codex/AGENTS.md"
+fi
+
 if [ -f "$HOME/.codex/auth.json" ]; then
     echo "Found existing Codex authentication"
 else

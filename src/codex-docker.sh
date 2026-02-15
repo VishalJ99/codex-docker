@@ -137,6 +137,16 @@ if [ -n "$HOST_HOME" ] && [ -f "$HOST_HOME/.codex/config.toml" ] && [ ! -f "$COD
     cp "$HOST_HOME/.codex/config.toml" "$CODEX_HOME_DIR/config.toml"
 fi
 
+if [ -n "$HOST_HOME" ] && [ -f "$HOST_HOME/.codex/AGENTS.md" ] && [ ! -f "$CODEX_HOME_DIR/AGENTS.md" ]; then
+    echo "✓ Seeding persistent AGENTS.md from host ~/.codex"
+    cp "$HOST_HOME/.codex/AGENTS.md" "$CODEX_HOME_DIR/AGENTS.md"
+fi
+
+if [ -f "$PROJECT_ROOT/.codex/AGENTS.md" ] && [ ! -f "$CODEX_HOME_DIR/AGENTS.md" ]; then
+    echo "✓ Seeding persistent AGENTS.md from project template"
+    cp "$PROJECT_ROOT/.codex/AGENTS.md" "$CODEX_HOME_DIR/AGENTS.md"
+fi
+
 echo ""
 echo "📁 Codex persistent home directory: $CODEX_HOME_DIR/"
 echo "   This directory is mounted as /home/codex-user/.codex in the container"
