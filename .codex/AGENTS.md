@@ -1,7 +1,6 @@
-# Default codex-docker user-level agent instructions.
-# This file is copied to CODEX_DOCKER_HOME/codex-home/AGENTS.md only if one is not already present.
-# This public repo should only include generally reusable defaults.
-# User-specific machine details and private helper workflows belong in a private repo or local AGENTS.md.
+# Agent Instructions
+
+Reusable defaults for `codex-docker`. User-specific details belong in a private repo or local `AGENTS.md`.
 
 ## Host Networking
 
