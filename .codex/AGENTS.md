@@ -1,38 +1,7 @@
 # Default codex-docker user-level agent instructions.
 # This file is copied to CODEX_DOCKER_HOME/codex-home/AGENTS.md only if one is not already present.
-
-## Helper Laptop
-
-This machine can use the user's laptop as a browser/UI helper over SSH.
-
-- host: `vishals-macbook-pro`
-- user: `vishaljain`
-- SSH command:
-  - `ssh vishaljain@vishals-macbook-pro`
-
-Use this when a task needs:
-
-- a real browser window
-- a local GUI app
-- loopback auth that is easier on the laptop than on the remote host
-
-## Generic Remote Auth Patterns
-
-- Fixed loopback callback port:
-  start SSH port forwarding first, then run the auth flow.
-
-- Random loopback callback port:
-  run the login command on the helper laptop itself, then sync the resulting auth file/token back
-  to the canonical runtime host if needed.
-
-- Browser-profile auth:
-  complete login on the helper laptop in the local browser/profile, then sync that profile data
-  back to the canonical runtime host if needed.
-
-## Safety
-
-- Treat laptop auth files, tokens, cookies, and browser profiles as sensitive.
-- Do not print secrets into chat unless the user already provided them explicitly.
+# This public repo should only include generally reusable defaults.
+# User-specific machine details and private helper workflows belong in a private repo or local AGENTS.md.
 
 ## Host Networking
 
