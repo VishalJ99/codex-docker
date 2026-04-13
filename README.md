@@ -48,12 +48,15 @@ codex-docker --rebuild             # Force rebuild image
 codex-docker --rebuild --no-cache  # Rebuild without cache
 codex-docker --memory 8g           # Set container memory limit
 codex-docker --gpus all            # Enable GPU access
+codex-docker --mount ../data:/mnt/data
+codex-docker --continue --mount /scratch/shared:/mnt/shared --mount ../models:/opt/models
 codex-docker --cc-version 0.98.0   # Pin Codex CLI version (legacy alias)
 codex-docker --codex-version 0.98.0
 ```
 
 Notes:
 - Use `--codex-version` to pin the Codex CLI version. `--cc-version` is a preserved legacy alias.
+- Use `--mount source:destination` multiple times to add extra host directories inside the container.
 - Inside container, Codex runs in YOLO mode via `--dangerously-bypass-approvals-and-sandbox`.
 
 ## Runtime Behavior
@@ -65,8 +68,26 @@ Notes:
   - `${CODEX_DOCKER_HOME:-~/.codex-docker}/codex-home/AGENTS.md`
 - SSH keys are mounted from:
   - `${CODEX_DOCKER_HOME:-~/.codex-docker}/ssh`
+- Extra `--mount` directories are mounted read-write at the container destinations you specify.
 - `host.docker.internal` is always added.
 - On Linux, network mode defaults to `host` unless overridden in `.env`.
+
+## Additional Directory Mounts
+
+Use a repeatable `--mount` flag when you need more than `/workspace` and the optional conda mounts:
+
+```bash
+codex-docker --mount ../shared-data:/mnt/shared
+codex-docker --mount /datasets/team-a:/mnt/datasets --mount ../models:/opt/models
+codex-docker --continue --mount ../checkpoints:/mnt/checkpoints
+```
+
+Rules:
+- Format is `source:destination`.
+- `source` must exist on the host and must be a directory. Relative host paths are resolved from the shell's current directory before Docker is launched.
+- `destination` must be an absolute path inside the container.
+- The wrapper rejects duplicate or reserved container destinations such as `/workspace` and the persistent Codex home mounts.
+- Extra `--mount` directories are read-write. Conda mounts remain read-only.
 
 ## Conda Mounting
 
